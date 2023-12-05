@@ -23,4 +23,4 @@ jobs:
           bun install
       - name: Run Tests
         run: |
-          bun test
+          bun test --coverage
