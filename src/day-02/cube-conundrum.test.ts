@@ -28,4 +28,15 @@ describe("Day 02, cube conundrum", () => {
       expect(result).toEqual(2716);
     });
   });
+
+  describe("Part Two", () => {
+    test("it should return 2286, example", () => {
+      const result = cubeConundrumPartTwo(content_example);
+      expect(result).toEqual(2286);
+    });
+    test("it should return 2716, input", () => {
+      const result = cubeConundrumPartTwo(content_input);
+      expect(result).toEqual(72227);
+    });
+  });
 });

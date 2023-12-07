@@ -39,3 +39,40 @@ export function cubeConundrumPartOne(content: string): number {
       }, 0)
   );
 }
+
+export function cubeConundrumPartTwo(content: string): number {
+  // Split the content into lines
+  const lines = content.trim().split("\n");
+
+  // Process each line
+  return (
+    lines
+      .map((line) => {
+        // Split the line into sets
+        const sets = line.split(": ")[1].split("; ");
+
+        // find the highest count for each color
+        const highestCount: maxCountType = sets.reduce(
+          (acc: maxCountType, set: string) => {
+            const pulls = set.split(", ");
+            pulls.forEach((pull) => {
+              const [count, color] = pull.split(" ");
+              if (acc[color] < Number(count)) {
+                acc[color] = Number(count);
+              }
+            });
+            return acc;
+          },
+          { red: 0, green: 0, blue: 0 }
+        );
+
+        // multiply the results and return
+        return Object.values(highestCount).reduce(
+          (acc, count) => acc * count,
+          1
+        );
+      })
+      // Sum up the results
+      .reduce((sum, result) => sum + result, 0)
+  );
+}
