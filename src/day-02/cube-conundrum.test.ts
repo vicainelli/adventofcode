@@ -7,16 +7,6 @@ const input = Bun.file("src/day-02/input.txt");
 const content_input = await input.text();
 const content_example = await example.text();
 
-type maxCountType = {
-  [key: string]: number;
-};
-
-const maxCount: maxCountType = {
-  red: 12,
-  green: 13,
-  blue: 14,
-};
-
 describe("Day 02, cube conundrum", () => {
   describe("Part One", () => {
     test("it should return 8, example", () => {
