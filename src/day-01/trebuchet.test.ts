@@ -1,10 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import { trebuchet } from "./trebuchet";
 
-const input = Bun.file("src/day-01/input.txt");
-
-const content = await input.text();
-
 describe("Day 01, trebuchet", () => {
   describe("Part 1, should form a single two-digit number by combining the first digit and the last digit in that order", () => {
     test("one string", () => {
