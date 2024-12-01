@@ -1,4 +1,4 @@
-name: Test
+name: Install and test TS 2023
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ on:
       - main
 
 jobs:
-  bun-unit-tests:
+  bun-unit-tests-ts-2023:
     name: bun-unit-tests
     runs-on: ubuntu-latest
     steps:
@@ -20,7 +20,9 @@ jobs:
           bun-version: latest
       - name: Install Dependencies
         run: |
+          cd 2023
           bun install
       - name: Run Tests
         run: |
+          cd 2023
           bun test --coverage
