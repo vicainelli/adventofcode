@@ -1,5 +1,5 @@
-export function findDistance(input: string): Number {
-  const [column_a, column_b] = input
+function transformInputIntoArrays(input: string): [never[], never[]] {
+  return input
     .trim()
     .split("\n")
     .map((line) => line.split(/\s+/))
@@ -11,6 +11,10 @@ export function findDistance(input: string): Number {
       },
       [[], []],
     );
+}
+
+export function findDistance(input: string): Number {
+  const [column_a, column_b] = transformInputIntoArrays(input);
 
   const sorted_a = column_a.sort();
   const sorted_b = column_b.sort();
@@ -21,4 +25,12 @@ export function findDistance(input: string): Number {
   const sum_of_arr = dist_arr.reduce((acc, curr) => acc + curr, 0);
 
   return sum_of_arr;
+}
+
+export function findDistancePart_2(input: string): Number {
+  const [column_a, column_b] = transformInputIntoArrays(input);
+
+  return column_a
+    .map((y) => column_b.filter((x) => x === y).length * y)
+    .reduce((a, b) => a + b, 0);
 }
