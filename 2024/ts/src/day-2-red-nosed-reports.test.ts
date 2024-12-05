@@ -1,8 +1,10 @@
 import { describe, it, expect } from "bun:test";
 import {
   day_2_part_1,
+  day_2_part_2,
   isReportSafe,
   transformInputIntoArrays,
+  removeFirstNonSequential,
 } from "./day-2-red-nosed-reports";
 
 const fileTest = Bun.file("./src/day-2-red-nosed-reports.input.test.txt");
@@ -64,6 +66,44 @@ describe("transformInputIntoArrays", () => {
   });
 });
 
+describe("removeFirstNonSequential", () => {
+  it("return [7, 6, 4, 2, 1] for [7, 6, 4, 2, 1]", () => {
+    const result = removeFirstNonSequential([7, 6, 4, 2, 1]);
+    const expected = [7, 6, 4, 2, 1];
+    expect(result).toEqual(expected);
+  });
+  it("return [1, 2, 7, 8, 9] for [1, 2, 7, 8, 9]", () => {
+    const result = removeFirstNonSequential([1, 2, 7, 8, 9]);
+    const expected = [1, 2, 7, 8, 9];
+    expect(result).toEqual(expected);
+  });
+  it("return [9, 7, 6, 2, 1] for [9, 7, 6, 2, 1]", () => {
+    const result = removeFirstNonSequential([9, 7, 6, 2, 1]);
+    const expected = [9, 7, 6, 2, 1];
+    expect(result).toEqual(expected);
+  });
+  it("return [1, 2, 4, 5] for [1, 3, 2, 4, 5]", () => {
+    const result = removeFirstNonSequential([1, 3, 2, 4, 5]);
+    const expected = [1, 2, 4, 5];
+    expect(result).toEqual(expected);
+  });
+  it("return [8, 6, 4, 1] for [8, 6, 4, 4, 1]", () => {
+    const result = removeFirstNonSequential([8, 6, 4, 4, 1]);
+    const expected = [8, 6, 4, 1];
+    expect(result).toEqual(expected);
+  });
+  it("return [1, 3, 6, 7, 9] for [1, 3, 6, 7, 9]", () => {
+    const result = removeFirstNonSequential([1, 3, 6, 7, 9]);
+    const expected = [1, 3, 6, 7, 9];
+    expect(result).toEqual(expected);
+  });
+  it.skip("return [ 2, 4, 6, 9, 10] for [ 2, 4, 6, 9, 10, 9 ]", () => {
+    const result = removeFirstNonSequential([2, 4, 6, 9, 10, 9]);
+    const expected = [2, 4, 6, 9, 10];
+    expect(result).toEqual(expected);
+  });
+});
+
 describe("Day 2: Red-Nosed Reports", () => {
   describe("part 1", () => {
     it("should return the correct amount of report from the test file", () => {
@@ -75,6 +115,20 @@ describe("Day 2: Red-Nosed Reports", () => {
     it("should return the correct amount of report from the input", () => {
       const result = day_2_part_1(content);
       const expected = 287;
+      expect(result).toBe(expected);
+      expect(typeof contentTest).toBe("string");
+    });
+  });
+  describe("part 2", () => {
+    it("should return the correct amount of report from the test file", () => {
+      const result = day_2_part_2(contentTest);
+      const expected = 4;
+      expect(result).toBe(expected);
+      expect(typeof contentTest).toBe("string");
+    });
+    it.skip("should return the correct amount of report from the file", () => {
+      const result = day_2_part_2(content);
+      const expected = 307;
       expect(result).toBe(expected);
       expect(typeof contentTest).toBe("string");
     });
