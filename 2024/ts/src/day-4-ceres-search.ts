@@ -8,12 +8,14 @@ SMSMSASXSS
 SAXAMASAAA
 MAMMMXMMMM
 MXMXAXMASX`;
+
 const table = input.split("\n").map((row) => row.split(""));
 const rows = table.length;
 const cols = table[0]?.length;
 const word = "XMAS".split("");
 let count = 0;
 
+// Part 1
 for (let i = 0; i < rows; i++) {
   for (let j = 0; j < rows; j++) {
     // Find horizontal
@@ -43,4 +45,4 @@ for (let i = 0; i < rows; i++) {
   }
 }
 
-console.log(count);
+console.log("part 1", count);
